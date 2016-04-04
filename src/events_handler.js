@@ -1,5 +1,6 @@
 import {parallel, series, waterfall} from 'async';
 import request from 'request';
+import semver from 'semver';
 import {GITHUB_API_URL_ROOT, GITHUB_USER, GITHUB_API_KEY, GITHUB_ORG_NAME} from './config';
 import {ok} from './utils';
 
@@ -65,8 +66,8 @@ export function getReposData(config) {
             if (err) return cb(err);
             if (!file.content && !file.encoding) return cb(null, null);
 
-            let pck = JSON.parse(new Buffer(file.content, file.encoding).toString('utf8'));
-            cb(null, pck);
+            let json = JSON.parse(new Buffer(file.content, file.encoding).toString('utf8'));
+            cb(null, json);
           });
         };
       }
@@ -93,31 +94,24 @@ export function updatePackageFile(data, config) {
   let pkg = data['package.json'];
   let releasedRepoName = config.PAYLOAD.repository.name;
   let releasedRepoVersion = config.PAYLOAD.release.tag_name;
-  let dep = pkg.dependencies[releasedRepoName];
-  let devDep = pkg.devDependencies[releasedRepoName];
-  let peerDep = pkg.peerDependencies[releasedRepoName];
+  let depVersion = pkg.dependencies[releasedRepoName];
+  //let devDep = pkg.devDependencies[releasedRepoName];
+  //let peerDep = pkg.peerDependencies[releasedRepoName];
   let re = /(\d\.\d\.\d)$/;
 
-  if (dep) {
-    let currentVersion = getCurVersion(dep);
-    pkg.dependencies[releasedRepoName] = replaceVersion(dep);
-  }
-  if (devDep) {
-    let currentVersion = getCurVersion(devDep);
-    pkg.devDependencies[releasedRepoName] = replaceVersion(devDep);
-  }
-  if (peerDep) {
-    let currentVersion = getCurVersion(peerDep);
-    pkg.peerDependencies[releasedRepoName] = replaceVersion(peerDep);
+  if (depVersion) {
+    pkg.dependencies[releasedRepoName] = replaceVersion(depVersion);
   }
 
   return pkg;
 
-  function getCurVersion(version) {
+  function getCurrentVersion(version) {
     return re.exec(version)[0];
   }
   function replaceVersion(version) {
-    return version.replace(re, releasedRepoName);
+    let currentVersion = getCurrentVersion(depVersion);
+    if (semver.lt(releasedRepoVersion, currentVersion)) return version;
+    return version.replace(re, releasedRepoVersion);
   }
 }
 
