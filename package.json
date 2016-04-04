@@ -1,0 +1,35 @@
+{
+  "name": "pkg-version-update-wt",
+  "version": "0.0.0",
+  "description": "Webtask/Github-webhook to update packages depending on a package being newly released.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register"
+  },
+  "keywords": [
+    "webtask",
+    "webhook",
+    "github",
+    "dependencies",
+    "update"
+  ],
+  "author": "Ludovic Henin <ludohenin>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "semver": "^5.1.0",
+    "sprintf-js": "^1.0.3",
+    "webtask-tools": "^1.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "nock": "^7.7.3",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^1.2.0"
+  }
+}
