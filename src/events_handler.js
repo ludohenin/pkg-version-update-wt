@@ -7,7 +7,7 @@ import {ok} from './utils';
 export function processReleaseUpdate(config, cb) {
   waterfall([
     gatherData(config),
-    updateRepoFiles
+    updateRepoFiles(config)
   ], formatPostEventResponseMsg(cb));
 }
 
