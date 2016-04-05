@@ -1,0 +1,20 @@
+[
+  {
+    "name": "repo_1",
+    "owner": {
+      "login": "test_org"
+    }
+  },
+  {
+    "name": "repo_2",
+    "owner": {
+      "login": "test_org"
+    }
+  },
+  {
+    "name": "repo_3",
+    "owner": {
+      "login": "test_org"
+    }
+  }
+]

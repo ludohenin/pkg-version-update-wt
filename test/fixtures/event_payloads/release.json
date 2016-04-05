@@ -1,0 +1,9 @@
+{
+  "action": "release",
+  "release": {
+    "tag_name": "3.0.0"
+  },
+  "repository": {
+    "name": "my-lib"
+  }
+}
