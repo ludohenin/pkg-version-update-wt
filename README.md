@@ -12,5 +12,6 @@ Webtask/webhook to update internal modules dependencies when a new version of on
 ```bash
 git clone https://github.com/ludohenin/pkg-version-update-wt.git
 cd pkg-version-update-wt
+npm install
 npm run test -- -w
 ```
