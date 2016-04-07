@@ -11,7 +11,9 @@ let stringify = JSON.stringify;
 
 describe('github - API request helpers', () => {
   describe('init', () => {
-    xit ('should throw if not initialized', () => {
+    before(() => github.reset());
+
+    it ('should throw if not initialized', () => {
       expect(err).to.throw(Error, /You must initialize github module first./);
       function err() { github.get(); }
     });
@@ -19,8 +21,9 @@ describe('github - API request helpers', () => {
 
   describe('request methods', () => {
     before(() => github.init(CONFIG));
+    after(() => github.reset());
 
-    xit('should should make a GET request', (done) => {
+    it('should should make a GET request', (done) => {
       nock(URL_BASE)
         .get('/').reply(200, stringify({a: 1}));
 
@@ -31,7 +34,7 @@ describe('github - API request helpers', () => {
       });
     });
 
-    xit('should get a special object if not expected status code', (done) => {
+    it('should get a special object if not expected status code', (done) => {
       nock(URL_BASE)
         .get('/').reply(404, stringify({message: 'Not found'}));
 

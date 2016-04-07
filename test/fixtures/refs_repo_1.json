@@ -1,0 +1,83 @@
+[
+  {
+    "ref": "refs/tags/v1.0.1",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/v1.0.1",
+    "object": {
+      "sha": "24c3673e874b85c8790a278465d6e1602cf6cbb1",
+      "type": "tag",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/tags/24c3673e874b85c8790a278465d6e1602cf6cbb1"
+    }
+  },
+  {
+    "ref": "refs/tags/v1.0.2",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/v1.0.2",
+    "object": {
+      "sha": "93baa42b29afc38476a7c02978876161c6bf94fb",
+      "type": "tag",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/tags/93baa42b29afc38476a7c02978876161c6bf94fb"
+    }
+  },
+  {
+    "ref": "refs/tags/v1.0.3",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/v1.0.3",
+    "object": {
+      "sha": "b69e4d71e4b79448f92940e2cc22605466dc27cf",
+      "type": "tag",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/tags/b69e4d71e4b79448f92940e2cc22605466dc27cf"
+    }
+  },
+  {
+    "ref": "refs/tags/2.0.0",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/2.0.0",
+    "object": {
+      "sha": "a351f69713c4b4c4d93cf91db8654401410d5b3e",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/a351f69713c4b4c4d93cf91db8654401410d5b3e"
+    }
+  },
+  {
+    "ref": "refs/tags/3.0.0",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/3.0.0",
+    "object": {
+      "sha": "1600ad52e2cec7ddfa3f632d1239c7a4625bf0c1",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/1600ad52e2cec7ddfa3f632d1239c7a4625bf0c1"
+    }
+  },
+  {
+    "ref": "refs/tags/4.0.0",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/4.0.0",
+    "object": {
+      "sha": "fa8313a3939dbaca279c871354b098f5199abffe",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/fa8313a3939dbaca279c871354b098f5199abffe"
+    }
+  },
+  {
+    "ref": "refs/tags/4.0.1",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/4.0.1",
+    "object": {
+      "sha": "3746fddbdf250e5c519ac160c2943ba94ff0acf8",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/3746fddbdf250e5c519ac160c2943ba94ff0acf8"
+    }
+  },
+  {
+    "ref": "refs/tags/4.0.2",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/4.0.2",
+    "object": {
+      "sha": "13e789e0e16112f0e083669d044206e09c306c12",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/13e789e0e16112f0e083669d044206e09c306c12"
+    }
+  },
+  {
+    "ref": "refs/tags/4.0.3",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/tags/4.0.3",
+    "object": {
+      "sha": "af0a09a96708e505cd8befebc2ea8b08187df890",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/af0a09a96708e505cd8befebc2ea8b08187df890"
+    }
+  }
+]
