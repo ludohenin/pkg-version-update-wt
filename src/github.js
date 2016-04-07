@@ -11,7 +11,8 @@ export const github = {
   init,
   get,
   post,
-  put
+  put,
+  reset
 };
 
 function init(config) {
@@ -26,6 +27,10 @@ function init(config) {
   };
 
   initialized = true;
+}
+
+function reset() {
+  initialized = false;
 }
 
 function get(endpoint, cb) {
