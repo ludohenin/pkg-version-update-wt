@@ -6,8 +6,9 @@ import {CONTENT_TYPE, MSG_UNSUPPORTED_CONTENT_TYPE} from './config';
 export function readJSONFileContent(file) {
   return JSON.parse(new Buffer(file.content, file.encoding).toString('utf8'));
 }
-export function writeJSONFileContent(file) {
-  return new Buffer(JSON.stringify(file, null, 2)).toString('base64');
+export function writeJSONFileContent(file, pkg) {
+  file.content = new Buffer(JSON.stringify(pkg, null, 2)).toString(file.encoding) + '\n';
+  return file;
 }
 
 export function verifyRequest(req, res, next) {

@@ -75,7 +75,7 @@ function updateFiles(conf) {
       shrinkwrap: cb => github.get(`${REPO_BASE}/contents/npm-shrinkwrap.json`, sanit(cb))
     }, (err, res) => {
       if (err) return cb(null, err);
-      // Assumes we always have both files.
+      // Assumes we always have both files all the way down.
 
       let pkg_update = updatePackageFileContent(res.package, REPO_NAME, RELEASE);
       let swk_update = updateShrinkwrapFileContent(res.shrinkwrap, REPO_NAME, RELEASE);
@@ -83,8 +83,8 @@ function updateFiles(conf) {
       let data = {
         repo,
         repo_url: REPO_BASE,
-        package: pkg_update.updated ? res.package : pkg_update.package,
-        shrinkwrap: swk_update.updated ? res.shrinkwrap : swk_update.shrinkwrap,
+        package: pkg_update.updated ? pkg_update.package: res.package,
+        shrinkwrap: swk_update.updated ? swk_update.shrinkwrap : res.shrinkwrap,
         updated_pkg: pkg_update.updated,
         message_pkg: pkg_update.message,
         updated_swk: swk_update.updated,
@@ -167,6 +167,8 @@ function updateRepo(conf) {
 
       github.post(`${data.repo_url}/pulls`, body, (err, res) => {
         if (err) return cb(err);
+        // TODO: Check for status code when not cretated
+        // 404 = already exist (which is fine)
         cb(null, data);
       });
     }
@@ -174,8 +176,8 @@ function updateRepo(conf) {
 }
 
 // Update package.json file.
-function updatePackageFileContent(tar, depName, version) {
-  let pkg = readJSONFileContent(tar);
+function updatePackageFileContent(file, depName, version) {
+  let pkg = readJSONFileContent(file);
   let depVersion = pkg.dependencies ? pkg.dependencies[depName] : null;
   let devDepVersion = pkg.devDependencies ? pkg.devDependencies[depName] : null;
   let re = /(\d\.\d\.\d)$/;
@@ -185,20 +187,20 @@ function updatePackageFileContent(tar, depName, version) {
     let currentVersion = re.exec(depVersion)[0];
     if (semver.gt(version, currentVersion)) {
       pkg.dependencies[depName] = depVersion.replace(re, version);
-      writeJSONFileContent(pkg);
+      writeJSONFileContent(file, pkg);
       updated = true;
     }
   } else if (devDepVersion) {
     let currentVersion = re.exec(devDepVersion)[0];
     if (semver.gt(version, currentVersion)) {
       pkg.devDependencies[depName] = devDepVersion.replace(re, version);
-      writeJSONFileContent(pkg);
+      writeJSONFileContent(file, pkg);
       updated = true;
     }
   }
 
   return {
-    package: pkg,
+    package: file,
     message: updated ? 'Updated package.json': null,
     updated
   };
