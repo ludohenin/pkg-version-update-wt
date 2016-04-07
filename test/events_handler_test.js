@@ -93,5 +93,10 @@ describe('events handler', () => {
         done();
       });
     });
+
+    xit('TODO: Add more test with unsuccessful API requests', (done) => {
+
+      done();
+    });
   });
 });

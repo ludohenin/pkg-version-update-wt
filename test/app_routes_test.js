@@ -2,7 +2,12 @@ import request from 'supertest';
 import {expect} from 'chai';
 import {sprintf} from 'sprintf-js';
 import {app} from '../src/app';
-import {GITHUB_EVENT_HEADER, MSG_NOT_FOUND, MSG_UNHANDLED_EVENT} from '../src/config';
+import {
+  GITHUB_EVENT_HEADER,
+  MSG_NOT_FOUND,
+  MSG_UNHANDLED_EVENT,
+  MSG_UNSUPPORTED_CONTENT_TYPE
+} from '../src/config';
 
 
 describe('app routes', () => {
@@ -21,11 +26,17 @@ describe('app routes', () => {
   });
 
   it('should respond with 400 if bad Content-Type', done => {
+    const TYPE = 'application/x-www-urlencoded';
     request(app)
-      .post('/')
-      .send({})
+      .post('/org')
+      .set('Content-Type', TYPE)
+      .send('{}')
       .end((err, res) => {
         if (err) return done(err);
+
+        expect(res.statusCode).to.equal(400);
+        expect(res.text).to.equal(sprintf(MSG_UNSUPPORTED_CONTENT_TYPE, TYPE));
+
         done();
       });
   });
@@ -33,9 +44,9 @@ describe('app routes', () => {
   it('should respond with 202 if event not supported', done => {
     const EVENT_NAME = 'any_event';
     request(app)
-      .post('/some-org')
-      .set({ [GITHUB_EVENT_HEADER]: EVENT_NAME })
-      .set({ 'Content-Type': 'application/json' })
+      .post('/org')
+      .set(GITHUB_EVENT_HEADER, EVENT_NAME)
+      .set('Content-Type', 'application/json')
       .end((err, res) => {
         if (err) return done(err);
 

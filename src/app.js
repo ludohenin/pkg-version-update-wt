@@ -11,5 +11,3 @@ app.use(verifyRequest);
 
 app.post('/:org', handleEvent, noEventFound);
 app.all('*', anyRoutes);
-
-// TODO(ludohenin): Handle errors.

@@ -17,6 +17,7 @@ import {
 } from './config';
 import {ok, readJSONFileContent, writeJSONFileContent} from './utils';
 
+// Format the response to send to github.com.
 export function formatResponse(dataList) {
   let response = dataList
     .filter(data => data !== null)
@@ -29,6 +30,7 @@ export function formatResponse(dataList) {
   return '- ' + response.join('\n- ');
 }
 
+// Handle `release` envent entry point.
 export function processReleaseUpdate(conf, cb) {
   waterfall([
     getInputs(conf),
@@ -46,10 +48,10 @@ function getInputs(conf) {
 
   return cb => {
     parallel({
-      repos: cb => github.get(`orgs/${ORG}/repos`, sanit(cb)),
-      package: cb => github.get(`${REPO_BASE}/contents/package.json`, sanit(cb)),
-      shrinkwrap: cb => github.get(`${REPO_BASE}/contents/npm-shrinkwrap.json`, sanit(cb)),
-      refs: cb => github.get(`${REPO_BASE}/git/refs`, sanit(cb))
+      repos: cb => github.get(`orgs/${ORG}/repos`, transform(cb)),
+      package: cb => github.get(`${REPO_BASE}/contents/package.json`, transform(cb)),
+      shrinkwrap: cb => github.get(`${REPO_BASE}/contents/npm-shrinkwrap.json`, transform(cb)),
+      refs: cb => github.get(`${REPO_BASE}/git/refs`, transform(cb))
     }, cb);
   };
 }
@@ -63,17 +65,15 @@ function processUpdate(config) {
       .filter(repo => repo.name !== REPO_NAME)
       .map(repo => cb => waterfall([cb => cb(null, repo),
                                     updateFiles(conf),
-                                    updateRepo(conf)], handleError(cb))); // Catch errors here. Error model: {error, data}
+                                    updateRepo(conf)], cb)); // Catch errors here. Error model: {error, data}
 
+    // Run all updates.
     parallel(asyncCalls, cb);
-
-    function handleError(cb) {
-      return (err, res) => {
-        cb(null, res);
-      };
-    }
   };
 }
+
+
+
 
 // Update a dependent repo if it needs to.
 function updateFiles(conf) {
@@ -85,8 +85,8 @@ function updateFiles(conf) {
     const RELEASE = conf.GITHUB_EVENT_PAYLOAD.release.tag_name;
 
     parallel({
-      package: cb => github.get(`${REPO_BASE}/contents/package.json`, sanit(cb)),
-      shrinkwrap: cb => github.get(`${REPO_BASE}/contents/npm-shrinkwrap.json`, sanit(cb))
+      package: cb => github.get(`${REPO_BASE}/contents/package.json`, transform(cb)),
+      shrinkwrap: cb => github.get(`${REPO_BASE}/contents/npm-shrinkwrap.json`, transform(cb))
     }, (err, res) => {
       if (err) return cb(null, err);
       // Assumes we always have both files all the way down.
@@ -118,7 +118,7 @@ function updateRepo(conf) {
     if (!data.updated_pkg && !data.updated_swk) return cb(null, null);
 
     waterfall([
-      cb => github.get(`${data.repo_url}/git/refs`, sanit(cb)),
+      cb => github.get(`${data.repo_url}/git/refs`, transform(cb)),
       createBranch,
       commit,
       sendPR
@@ -149,8 +149,8 @@ function updateRepo(conf) {
 
       function getFilesFromBranch(branch) {
         parallel({
-          package: cb => github.get(`${data.repo_url}/contents/package.json?ref=${GITHUB_BRANCH_NAME}`, sanit(cb)),
-          shrinkwrap: cb => github.get(`${data.repo_url}/contents/npm-shrinkwrap.json?ref=${GITHUB_BRANCH_NAME}`, sanit(cb))
+          package: cb => github.get(`${data.repo_url}/contents/package.json?ref=${GITHUB_BRANCH_NAME}`, transform(cb)),
+          shrinkwrap: cb => github.get(`${data.repo_url}/contents/npm-shrinkwrap.json?ref=${GITHUB_BRANCH_NAME}`, transform(cb))
         }, (err, pkgs) => {
           if (err) return cb(err);
           pkgs.package.content = data.package.content;
@@ -178,7 +178,7 @@ function updateRepo(conf) {
         sha: data.shrinkwrap.sha
       };
 
-      waterfall([ // Seems to fix an issue when using parallel.
+      waterfall([ // Seems to fix an issue when using parallel (wrong sha).
         cb => github.put(`${data.repo_url}/contents/package.json`, pkg_body, cb),
         (file, cb) => github.put(`${data.repo_url}/contents/npm-shrinkwrap.json`, swk_body, (err, res) => cb(err, [file, res]))
       ], cb);
@@ -199,6 +199,8 @@ function updateRepo(conf) {
     }
   };
 }
+
+
 
 // Update package.json file.
 function updatePackageFileContent(file, depName, version) {
@@ -230,6 +232,7 @@ function updatePackageFileContent(file, depName, version) {
     updated
   };
 }
+
 // Update npm-shrinkwrap.json file.
 function updateShrinkwrapFileContent(conf, file, depName, version) {
   let updated = false;
@@ -264,7 +267,7 @@ function updateShrinkwrapFileContent(conf, file, depName, version) {
 
 // Utils.
 
-function sanit(cb) {
+function transform(cb) {
   return (err, res) => {
     if (err) return cb(err);
     if ('response' in res && 'body' in res) return cb(null, null);

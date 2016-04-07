@@ -34,24 +34,22 @@ function reset() {
 }
 
 function get(endpoint, cb) {
-  isInit();
   const METHOD = 'GET';
   makeRequest(METHOD, endpoint, requestCallback(METHOD, cb));
 }
 
 function post(endpoint, body, cb) {
-  isInit();
   const METHOD = 'POST';
   makeRequest(METHOD, endpoint, JSON.stringify(body), requestCallback(METHOD, cb));
 }
 
 function put(endpoint, body, cb) {
-  isInit();
   const METHOD = 'PUT';
   makeRequest(METHOD, endpoint, JSON.stringify(body), requestCallback(METHOD, cb));
 }
 
 function makeRequest(method, endpoint, body, cb) {
+  isInit();
   if (cb === undefined) { cb = body; body = ''; }
   let req = Object.assign({}, GITHUB_REQUEST_HEADERS, {method, body, url: `${GITHUB_URL_ROOT}/${endpoint}`});
   request(req, cb);

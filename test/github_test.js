@@ -23,7 +23,7 @@ describe('github - API request helpers', () => {
     before(() => github.init(CONFIG));
     after(() => github.reset());
 
-    it('should should make a GET request', (done) => {
+    it('should make a GET request', (done) => {
       nock(URL_BASE)
         .get('/').reply(200, stringify({a: 1}));
 
@@ -46,7 +46,7 @@ describe('github - API request helpers', () => {
       });
     });
 
-    it('should should make a POST request', (done) => {
+    it('should make a POST request', (done) => {
       nock(URL_BASE)
         .post('/').reply(201, stringify({a: 1}));
 
@@ -57,7 +57,7 @@ describe('github - API request helpers', () => {
       });
     });
 
-    it('should should make a PUT request', (done) => {
+    it('should make a PUT request', (done) => {
       nock(URL_BASE)
         .put('/').reply(200, stringify({a: 1}));
 
