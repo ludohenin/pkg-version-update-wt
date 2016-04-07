@@ -1,9 +1,0 @@
-{
-  "name": "repo_1",
-  "version": "1.0.0",
-  "dependencies": {
-    "async": "^2.0.0-rc.2",
-    "request": "^2.69.0",
-    "my-lib": "github:org/my-lib#4.0.0"
-  }
-}

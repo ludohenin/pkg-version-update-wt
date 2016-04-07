@@ -1,0 +1,18 @@
+{
+  "name": "npm-shrinkwrap.json",
+  "path": "npm-shrinkwrap.json",
+  "sha": "64a4caf3e7f1e6e7415828086247a1b9e021f10a",
+  "size": 1491,
+  "url": "https://api.github.com/repos/ludohenin-test/repo_4/contents/npm-shrinkwrap.json?ref=master",
+  "html_url": "https://github.com/ludohenin-test/repo_4/blob/master/npm-shrinkwrap.json",
+  "git_url": "https://api.github.com/repos/ludohenin-test/repo_4/git/blobs/64a4caf3e7f1e6e7415828086247a1b9e021f10a",
+  "download_url": "https://raw.githubusercontent.com/ludohenin-test/repo_4/master/npm-shrinkwrap.json",
+  "type": "file",
+  "content": "ewogICJuYW1lIjogInJlcG9fNCIsCiAgInZlcnNpb24iOiAiMC4wLjAiLAog\nICJkZXBlbmRlbmNpZXMiOiB7CiAgICAibG9kYXNoIjogewogICAgICAidmVy\nc2lvbiI6ICIzLjAuMCIsCiAgICAgICJmcm9tIjogImxvZGFzaEAzLjAuMCIs\nCiAgICAgICJyZXNvbHZlZCI6ICJodHRwczovL3JlZ2lzdHJ5Lm5wbWpzLm9y\nZy9sb2Rhc2gvLS9sb2Rhc2gtMy4wLjAudGd6IgogICAgfSwKICAgICJyZXBv\nXzEiOiB7CiAgICAgICJ2ZXJzaW9uIjogIjQuMC4yIiwKICAgICAgImZyb20i\nOiAibHVkb2hlbmluLXRlc3QvcmVwb18xIzQuMC4yIiwKICAgICAgInJlc29s\ndmVkIjogImdpdDovL2dpdGh1Yi5jb20vbHVkb2hlbmluLXRlc3QvcmVwb18x\nLmdpdCNhZjBhMDlhOTY3MDhlNTA1Y2Q4YmVmZWJjMmVhOGIwODE4N2RmODkw\nIiwKICAgICAgImRlcGVuZGVuY2llcyI6IHsKICAgICAgICAiYXN5bmMiOiB7\nCiAgICAgICAgICAidmVyc2lvbiI6ICIyLjAuMC1yYy4yIiwKICAgICAgICAg\nICJmcm9tIjogImFzeW5jQGxhdGVzdCIsCiAgICAgICAgICAicmVzb2x2ZWQi\nOiAiaHR0cHM6Ly9yZWdpc3RyeS5ucG1qcy5vcmcvYXN5bmMvLS9hc3luYy0y\nLjAuMC1yYy4yLnRneiIsCiAgICAgICAgICAiZGVwZW5kZW5jaWVzIjogewog\nICAgICAgICAgICAibG9kYXNoIjogewogICAgICAgICAgICAgICJ2ZXJzaW9u\nIjogIjQuOC4yIiwKICAgICAgICAgICAgICAiZnJvbSI6ICJsb2Rhc2hAPj00\nLjMuMCA8NS4wLjAiLAogICAgICAgICAgICAgICJyZXNvbHZlZCI6ICJodHRw\nczovL3JlZ2lzdHJ5Lm5wbWpzLm9yZy9sb2Rhc2gvLS9sb2Rhc2gtNC44LjIu\ndGd6IgogICAgICAgICAgICB9CiAgICAgICAgICB9CiAgICAgICAgfSwKICAg\nICAgICAibG9kYXNoIjogewogICAgICAgICAgInZlcnNpb24iOiAiMy4wLjAi\nLAogICAgICAgICAgImZyb20iOiAibG9kYXNoQDMuMC4wIiwKICAgICAgICAg\nICJyZXNvbHZlZCI6ICJodHRwczovL3JlZ2lzdHJ5Lm5wbWpzLm9yZy9sb2Rh\nc2gvLS9sb2Rhc2gtMy4wLjAudGd6IgogICAgICAgIH0KICAgICAgfQogICAg\nfSwKICAgICJyZXBvXzIiOiB7CiAgICAgICJ2ZXJzaW9uIjogIjAuMC4xIiwK\nICAgICAgImZyb20iOiAibHVkb2hlbmluLXRlc3QvcmVwb18yIzAuMC4zIiwK\nICAgICAgInJlc29sdmVkIjogImdpdDovL2dpdGh1Yi5jb20vbHVkb2hlbmlu\nLXRlc3QvcmVwb18yLmdpdCM2N2YzMDliNzA5Yzg3NWEzMDM0ZGFkYTAxN2Vj\nM2VkMzhlYmExZDkwIiwKICAgICAgImRlcGVuZGVuY2llcyI6IHsKICAgICAg\nICAicmVwb18xIjogewogICAgICAgICAgInZlcnNpb24iOiAiNC4wLjIiLAog\nICAgICAgICAgImZyb20iOiAibHVkb2hlbmluLXRlc3QvcmVwb18xIzQuMC4y\nIiwKICAgICAgICAgICJyZXNvbHZlZCI6ICJnaXQ6Ly9naXRodWIuY29tL2x1\nZG9oZW5pbi10ZXN0L3JlcG9fMS5naXQjMTNlNzg5ZTBlMTYxMTJmMGUwODM2\nNjlkMDQ0MjA2ZTA5YzMwNmMxMiIKICAgICAgICB9CiAgICAgIH0KICAgIH0K\nICB9Cn0K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/ludohenin-test/repo_4/contents/npm-shrinkwrap.json?ref=master",
+    "git": "https://api.github.com/repos/ludohenin-test/repo_4/git/blobs/64a4caf3e7f1e6e7415828086247a1b9e021f10a",
+    "html": "https://github.com/ludohenin-test/repo_4/blob/master/npm-shrinkwrap.json"
+  }
+}

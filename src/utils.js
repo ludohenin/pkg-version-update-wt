@@ -1,6 +1,14 @@
 import request from 'request';
-import {sprintf} from 'sprintf';
+import {sprintf} from 'sprintf-js';
 import {CONTENT_TYPE, MSG_UNSUPPORTED_CONTENT_TYPE} from './config';
+
+
+export function readJSONFileContent(file) {
+  return JSON.parse(new Buffer(file.content, file.encoding).toString('utf8'));
+}
+export function writeJSONFileContent(file) {
+  return new Buffer(JSON.stringify(file, null, 2)).toString('base64');
+}
 
 export function verifyRequest(req, res, next) {
   const contentType = req.get(CONTENT_TYPE);

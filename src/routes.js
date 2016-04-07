@@ -1,7 +1,8 @@
-import {sprintf} from 'sprintf';
+import {sprintf} from 'sprintf-js';
 import {GITHUB_EVENT_HEADER, MSG_UNHANDLED_EVENT, MSG_NOT_FOUND} from './config';
 import {accepted, notFound, ok, internalServerError} from './utils';
-import {processReleaseUpdate, handleDeleteEvent} from './events_handler';
+import {processReleaseUpdate, handleDeleteEvent, formatResponse} from './events_handler';
+import {github} from './github';
 
 export function handleEvent(req, res, next) {
   const CONFIG = {
@@ -11,11 +12,13 @@ export function handleEvent(req, res, next) {
     GITHUB_ORG_NAME: req.params.org
   };
 
+  github.init(CONFIG);
+
   switch (req.get(GITHUB_EVENT_HEADER)) {
     case 'release':
       processReleaseUpdate(CONFIG, (err, result) => {
         if (err) return internalServerError(res, err);
-        ok(res, result);
+        ok(res, formatResponse(result));
       });
       break;
     case 'delete':

@@ -28,7 +28,10 @@ build/Release
 # Users Environment Variables
 .lock-wscript
 .typingsrc
-.vscode
 
 #IDE configuration files
 .idea
+.vscode
+
+start.sh
+build

@@ -1,0 +1,11 @@
+[
+  {
+    "ref": "refs/heads/master",
+    "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/refs/heads/master",
+    "object": {
+      "sha": "af0a09a96708e505cd8befebc2ea8b08187df890",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ludohenin-test/repo_1/git/commits/af0a09a96708e505cd8befebc2ea8b08187df890"
+    }
+  }
+]

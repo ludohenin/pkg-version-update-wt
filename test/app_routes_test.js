@@ -1,6 +1,6 @@
 import request from 'supertest';
 import {expect} from 'chai';
-import {sprintf} from 'sprintf';
+import {sprintf} from 'sprintf-js';
 import {app} from '../src/app';
 import {GITHUB_EVENT_HEADER, MSG_NOT_FOUND, MSG_UNHANDLED_EVENT} from '../src/config';
 

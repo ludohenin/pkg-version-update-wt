@@ -1,0 +1,18 @@
+{
+  "name": "package.json",
+  "path": "package.json",
+  "sha": "27e989299063d92edb55330ad4b3a23128c3110e",
+  "size": 379,
+  "url": "https://api.github.com/repos/ludohenin-test/repo_4/contents/package.json?ref=master",
+  "html_url": "https://github.com/ludohenin-test/repo_4/blob/master/package.json",
+  "git_url": "https://api.github.com/repos/ludohenin-test/repo_4/git/blobs/27e989299063d92edb55330ad4b3a23128c3110e",
+  "download_url": "https://raw.githubusercontent.com/ludohenin-test/repo_4/master/package.json",
+  "type": "file",
+  "content": "ewogICJuYW1lIjogInJlcG9fNCIsCiAgInZlcnNpb24iOiAiMC4wLjAiLAog\nICJkZXNjcmlwdGlvbiI6ICIiLAogICJtYWluIjogImluZGV4LmpzIiwKICAi\nc2NyaXB0cyI6IHsKICAgICJ0ZXN0IjogImVjaG8gXCJFcnJvcjogbm8gdGVz\ndCBzcGVjaWZpZWRcIiAmJiBleGl0IDEiCiAgfSwKICAiYXV0aG9yIjogIkx1\nZG92aWMgSGVuaW4gPGx1ZG9oZW5pbj4iLAogICJsaWNlbnNlIjogIk1JVCIs\nCiAgImRlcGVuZGVuY2llcyI6IHsKICAgICJsb2Rhc2giOiAiXjMuMC4wIiwK\nICAgICJyZXBvXzEiOiAiZ2l0aHViOmx1ZG9oZW5pbi10ZXN0L3JlcG9fMSM0\nLjAuMiIsCiAgICAicmVwb18yIjogImdpdGh1YjpsdWRvaGVuaW4tdGVzdC9y\nZXBvXzIjMC4wLjMiCiAgfQp9Cg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/ludohenin-test/repo_4/contents/package.json?ref=master",
+    "git": "https://api.github.com/repos/ludohenin-test/repo_4/git/blobs/27e989299063d92edb55330ad4b3a23128c3110e",
+    "html": "https://github.com/ludohenin-test/repo_4/blob/master/package.json"
+  }
+}

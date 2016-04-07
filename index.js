@@ -1,6 +1,4 @@
-'use latest';
-
-import Webtask from 'webtask-tools';
+import {fromExpress} from 'webtask-tools';
 import {app} from './src/app';
 
-exports = Webtask.fromExpress(app);
+module.exports = fromExpress(app);
