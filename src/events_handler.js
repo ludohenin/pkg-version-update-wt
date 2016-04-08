@@ -17,6 +17,7 @@ import {
 } from './config';
 import {ok, readJSONFileContent, writeJSONFileContent} from './utils';
 
+
 // Format the response to send to github.com.
 export function formatResponse(dataList) {
   let response = dataList
@@ -179,7 +180,7 @@ function updateRepo(conf) {
       };
 
       waterfall([ // Seems to fix an issue when using parallel (wrong sha).
-        cb => github.put(`${data.repo_url}/contents/package.json`, pkg_body, cb),
+        cb => github.put(`${data.repo_url}/contents/package.json`, pkg_body, transform(cb)),
         (file, cb) => github.put(`${data.repo_url}/contents/npm-shrinkwrap.json`, swk_body, (err, res) => cb(err, [file, res]))
       ], cb);
     }
@@ -270,7 +271,7 @@ function updateShrinkwrapFileContent(conf, file, depName, version) {
 function transform(cb) {
   return (err, res) => {
     if (err) return cb(err);
-    if ('response' in res && 'body' in res) return cb(null, null);
+    if ('response' in res && 'body' in res) return cb(res);
     cb(null, res);
   };
 }
